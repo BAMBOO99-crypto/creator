@@ -1,0 +1,27 @@
+[
+  {
+    "json": {
+      "title": "Fictional university launches an open AI course",
+      "link": "https://example.org/sample/open-course",
+      "isoDate": "2026-10-29T11:00:00Z",
+      "source": "Demo RSS Source (fictional)",
+      "contentSnippet": "Synthetic sample feed metadata for verifying the offline workflow."
+    }
+  },
+  {
+    "json": {
+      "title": "Fictional library publishes research-reading guide",
+      "link": "https://example.org/sample/reading-guide",
+      "isoDate": "2026-10-29T10:00:00Z",
+      "source": "Demo RSS Source (fictional)",
+      "contentSnippet": "Second synthetic example for test reproducibility."
+    }
+  },
+  {
+    "json": {
+      "title": "Stale fictional headline",
+      "link": "https://example.org/sample/old",
+      "isoDate": "2026-10-01T10:00:00Z"
+    }
+  }
+]
