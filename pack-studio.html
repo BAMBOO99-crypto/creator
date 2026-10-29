@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="description" content="A private, local editor for a source-grounded six-slide content pack.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>Pack Studio · AI Command Center</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./pack-studio.css">
+    <script src="./pack-studio.mjs" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#pack-editor">Skip to editor</a>
+    <header class="topbar">
+      <a class="wordmark" href="./index.html#build" aria-label="AI Command Center build board"><span class="brand-mark" aria-hidden="true">▦</span><span>COMMAND<span>CENTER</span></span></a>
+      <a class="back-link" href="./index.html#build">← Build board</a>
+      <p id="save-status" class="save-status" role="status">Opening local draft…</p>
+    </header>
+
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div><p class="eyebrow">BUILD EXPERIMENT / SOURCE TO SIX</p><h1 id="page-title">Pack Studio<span>.</span></h1><p class="hero-copy">One source. A small, useful content pack.<br>Shape six slides, five captions and a newsletter for review.</p></div>
+        <div class="hero-note"><span class="draft-pill">PRIVATE DRAFT</span><p>You write or paste the copy.<br>This editor formats the delivery.</p><span class="small-note">Local only · No AI calls · No publishing</span></div>
+      </section>
+
+      <div class="actionbar" aria-label="Pack actions">
+        <button id="load-sample" type="button" class="button primary"><span aria-hidden="true">↗</span> Try a fictional example</button>
+        <div class="export-actions"><button id="export-text" type="button" class="button secondary">↓ Editable text</button><button id="export-html" type="button" class="button secondary">↓ Review HTML</button><button id="export-json" type="button" class="button quiet">Back up JSON</button><button id="open-import" type="button" class="button quiet">Import</button><input id="import-file" type="file" accept="application/json,.json" hidden></div>
+      </div>
+      <p class="action-hint">Exports stay labelled DRAFT. JSON backs up your editable fields. Nothing uploads or sends.</p>
+      <div id="app-message" class="notice" role="status" aria-live="polite" hidden></div>
+      <section id="recovery" class="recovery" aria-labelledby="recovery-title" hidden>
+        <h2 id="recovery-title">Your saved copy needs attention.</h2><p id="recovery-message">The saved draft could not be read. It has been preserved. Download the original before deciding whether to reset.</p><div class="button-row"><button id="download-raw" type="button" class="button secondary">Download original saved data</button><button id="reset-saved" type="button" class="button danger">Reset preserved draft</button></div>
+      </section>
+
+      <nav class="section-nav" aria-label="Pack sections"><a href="#brief">01 <span>Source</span></a><a href="#slides">02 <span>Six slides</span></a><a href="#captions">03 <span>Five captions</span></a><a href="#newsletter">04 <span>Newsletter</span></a><a href="#review">05 <span>Review</span></a></nav>
+
+      <div class="workbench">
+        <form id="pack-editor" novalidate>
+          <fieldset id="editing-fields" class="editor-fieldset">
+            <legend class="sr-only">Content pack editor</legend>
+            <section id="brief" class="editor-section" aria-labelledby="brief-title">
+              <div class="section-heading"><div><p class="eyebrow">01 / THE STARTING POINT</p><h2 id="brief-title">Keep the source close.</h2></div><span class="section-symbol" aria-hidden="true">↳</span></div>
+              <div class="field-grid"><div class="field"><label for="pack-title">Pack title</label><input id="pack-title" data-path="title" maxlength="200" placeholder="A clear name for this pack" autocomplete="off"></div><div class="field"><label for="brand">Brand / project</label><input id="brand" data-path="brand" maxlength="200" placeholder="Your fictional or agreed project" autocomplete="off"></div><div class="field full"><label for="source-reference">Source reference</label><input id="source-reference" data-path="sourceReference" maxlength="2000" placeholder="A source title, filename or permitted link"><small>A public link alone does not establish permission to adapt it.</small></div><div class="field full"><label for="source-text">Source text</label><textarea id="source-text" data-path="sourceText" rows="5" maxlength="20000" placeholder="Paste one source you are permitted to use. Every material claim should come from it."></textarea><small>Use only material you are authorised to process. These fields stay in this browser unless you export them.</small></div></div>
+              <label class="fictional-choice"><input id="fictional" data-path="fictional" type="checkbox" checked><span><strong>Fictional practice pack</strong><small>Keep this on for an invented business or sample. Every export carries the sample label.</small></span></label>
+            </section>
+
+            <section id="slides" class="editor-section" aria-labelledby="slides-title"><div class="section-heading"><div><p class="eyebrow">02 / THE CAROUSEL</p><h2 id="slides-title">Six slides. One clear thread.</h2><p>Start with a specific hook. Finish with a supported next step.</p></div><span id="slides-progress" class="progress-chip">0 / 6</span></div><div id="slide-fields" class="slide-fields"></div></section>
+
+            <section id="captions" class="editor-section" aria-labelledby="captions-title"><div class="section-heading"><div><p class="eyebrow">03 / FIVE ANGLES</p><h2 id="captions-title">Give the idea a few openings.</h2><p>Five distinct captions, each grounded in the same source.</p></div><span id="captions-progress" class="progress-chip">0 / 5</span></div><div id="caption-fields" class="caption-fields"></div></section>
+
+            <section id="newsletter" class="editor-section" aria-labelledby="newsletter-title"><div class="section-heading"><div><p class="eyebrow">04 / A SHORT READ</p><h2 id="newsletter-title">Bring it together.</h2><p>A subject line and a brief newsletter. Keep it useful and specific.</p></div></div><div id="newsletter-fields" class="newsletter-fields"></div></section>
+
+            <section id="review" class="editor-section review-section" aria-labelledby="review-title"><div class="section-heading"><div><p class="eyebrow">05 / THE HUMAN CHECK</p><h2 id="review-title">Before the handoff.</h2><p>Editing the source or copy clears these checks so you can review the current version.</p></div></div><label class="review-check"><input id="check-permission" type="checkbox" data-check="permission"><span><strong>Source permission and processing are checked.</strong><small>The agreed use is permitted, or all outputs remain clearly labelled fictional practice.</small></span></label><label class="review-check"><input id="check-facts" type="checkbox" data-check="facts"><span><strong>Every material claim matches the source.</strong><small>I have checked the copy, removed unsupported claims and reviewed the full pack.</small></span></label><div id="review-status" class="review-status"><span class="status-ring" aria-hidden="true">○</span><div><h3 id="readiness-title">Draft in progress</h3><p id="readiness-detail">Complete the fields and source checks before client review.</p></div></div><details id="issues-details"><summary id="issues-summary">What still needs attention</summary><ul id="issues-list"></ul></details><p class="review-note">“Ready for client review” means ready for a human decision. It does not record client approval, validate demand or publish anything.</p></section>
+          </fieldset>
+        </form>
+
+        <aside class="preview-rail" aria-labelledby="preview-title"><div class="preview-sticky"><div class="preview-heading"><p class="eyebrow" id="preview-title">YOUR WORK IN VIEW</p><span id="pack-badge" class="mini-badge">FICTIONAL SAMPLE</span></div><div class="preview-select"><label for="preview-slide">Slide preview</label><select id="preview-slide"><option value="0">01 — The opening</option><option value="1">02 — The idea</option><option value="2">03 — The detail</option><option value="3">04 — The useful part</option><option value="4">05 — The takeaway</option><option value="5">06 — The next step</option></select></div><article id="slide-preview" class="slide-preview"><div class="preview-top"><span id="preview-brand">YOUR PROJECT</span><span>DRAFT</span></div><div class="preview-copy"><h3 id="preview-slide-title">A little space<br>for a good idea.</h3><p id="preview-slide-body">Your slide copy will appear here as you write.</p></div><div class="preview-bottom"><span id="preview-label">FICTIONAL SAMPLE</span><span id="preview-number">01 / 06</span></div></article><p class="preview-footnote">A writing preview. Download Review HTML to inspect the complete pack.</p><div class="scope-card"><p class="eyebrow">THE DELIVERY</p><div><strong id="scope-slides">0<span>/6</span></strong><span>slides filled</span></div><div><strong id="scope-captions">0<span>/5</span></strong><span>captions filled</span></div><div><strong id="scope-newsletter">0<span>/1</span></strong><span>newsletter filled</span></div><p>Complete copy + checked source<br><span aria-hidden="true">↳</span> Ready for client review.</p></div><div class="local-note"><span aria-hidden="true">⌁</span><p><strong>Your work stays here.</strong> Local browser storage is not cloud backup. Download JSON to keep a separate copy.</p></div></div></aside>
+      </div>
+
+      <footer><span>AI COMMAND CENTER / PACK STUDIO</span><span>Manual drafting. Your judgment.</span><button id="new-pack" type="button" class="text-button">Start a fresh pack</button></footer>
+    </main>
+
+    <dialog id="confirm-dialog" aria-labelledby="dialog-title"><form id="dialog-form" method="dialog"><p class="eyebrow" id="dialog-eyebrow">REVIEW BEFORE REPLACING</p><h2 id="dialog-title">Replace the current pack?</h2><p id="dialog-copy"></p><dl id="import-preview" hidden></dl><p class="dialog-note">Back up your current pack first if you need to keep it. This action changes only this Pack Studio draft.</p><div class="dialog-actions"><button id="dialog-cancel" class="button secondary" value="cancel" type="submit">Keep current pack</button><button id="dialog-confirm" class="button primary" value="confirm" type="submit">Replace pack</button></div></form></dialog>
+    <noscript><p class="noscript">Enable JavaScript to edit this local pack. No AI service or social account is connected.</p></noscript>
+  </body>
+</html>
