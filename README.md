@@ -19,6 +19,16 @@ Open **http://127.0.0.1:8080**. Keep the terminal running while using the app; p
 3. **Create a build task.** Define a small experiment from an approved discovery. Track To do, In progress, Blocked or Done. Done requires written test evidence. These are user-entered records, not independent proof of testing.
 4. **Export a backup.** Download your JSON from the header or Workspace data. Import a file or paste JSON to preview a merge before confirming.
 
+## Content Pack Studio
+
+Open **Build board → Open Pack Studio**, or visit **http://127.0.0.1:8080/pack-studio.html** while the local server runs. The studio supports the proposed six-slide, five-caption and short-newsletter service with a reusable manual editor, source notes, word limits, review checks and draft exports. It formats and checks your entered text; it does not generate AI copy.
+
+The studio has its own browser-local draft and JSON backup, separate from discoveries and tasks. Studio imports replace that draft only after a preview and confirmation, and reset its source/review checks. A fictional sample is provided for rehearsal. Text and review-HTML exports remain marked Draft and require a human decision before use. The review HTML is a printable layout; no PDF file or image export is produced by the app.
+
+Use one editing tab for Pack Studio; its draft storage is not transactional across tabs. Its completion checks are a local writing aid and do not certify that a source or claim is accurate.
+
+This improves delivery preparation. The proposed GBP 35 pilot price, customer demand and delivery-time savings remain unvalidated. No customer has been contacted or charged by this app.
+
 The **Personal / Business**, **AI Research** and **Public web index** channels are separate manual research labels. They do not connect to accounts. Discovery surfaces distinguish For You feed, Saved post, TikTok search, Public web index and Direct link. A public search result cannot be recorded as an account-feed observation through the Public web index channel. Provenance is recorded by you; the app cannot verify that it is truthful.
 
 URL validation checks the address format and deduplicates by TikTok video ID, including across different handles and tracking parameters. It does not check reachability, ownership or the post's contents. Open shortened `vm.tiktok.com` or `vt.tiktok.com` links in your browser and copy the expanded full video URL. Profiles, photo posts and arbitrary websites are outside this MVP.
@@ -47,9 +57,11 @@ The supplied server binds only to `127.0.0.1`, allows GET/HEAD for an explicit a
 ## Verify
 
 ```sh
-node --test tests/core.test.mjs
+node --test tests/core.test.mjs tests/pack.test.mjs
 node --check app.mjs
 node --check core.mjs
+node --check pack-core.mjs
+node --check pack-studio.mjs
 node --check scripts/serve.mjs
 ```
 

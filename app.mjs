@@ -140,6 +140,7 @@ function taskCard(task) {
 function buildView() {
   const statuses = [['todo','To do'],['doing','In progress'],['blocked','Blocked'],['done','Done']];
   return `<div class="section-head"><h2>From evidence to experiment</h2>${badge(`${state.tasks.length} tasks`)}</div>
+    <section class="card data-panel"><span class="eyebrow">BUILD TOOL / CONTENT PACKS</span><h3>Turn an approved source into a reviewable deliverable.</h3><p>Use the local Pack Studio to edit six slides, five captions and a short newsletter. Check the source, then export editable text and a review layout.</p><a class="button secondary" href="./pack-studio.html">Open Pack Studio ↗</a><p class="muted">Manual editor · separate local draft · no AI request or publishing</p></section>
     <div class="callout subtle">Tasks track your work; they never execute code. Create a task from an approved discovery. Marking it done requires written test evidence. Changing a source or revoking approval blocks its tasks.</div>
     ${!state.tasks.length ? empty('Your next build starts with review.','Approve a discovery, then choose Create task. Keep the experiment small and record what you actually tested.',false) : `<div class="task-columns">${statuses.map(([status,label])=>`<section class="task-column"><div class="section-head"><h3>${label}</h3><span class="count">${state.tasks.filter(t=>t.status===status).length}</span></div><div class="stack">${state.tasks.filter(t=>t.status===status).map(taskCard).join('') || '<p class="muted column-empty">No tasks here.</p>'}</div></section>`).join('')}</div>`}`;
 }

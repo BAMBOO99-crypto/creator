@@ -289,6 +289,9 @@ test('local server serves only public assets and rejects writes and path travers
   assert.match(module.headers['content-type'], /javascript/);
   assert.match(module.headers['content-security-policy'], /connect-src 'none'/);
   assert.equal(module.headers['x-content-type-options'], 'nosniff');
+  for (const path of ['/pack-studio.html', '/pack-studio.mjs', '/pack-core.mjs', '/pack-studio.css']) {
+    assert.equal((await get(path)).status, 200, path);
+  }
   const head = await get('/core.mjs', 'HEAD');
   assert.equal(head.status, 200);
   assert.equal(head.body, '');

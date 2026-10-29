@@ -35,6 +35,14 @@ The local app was exercised in the Codex in-app browser at a 338 px viewport usi
 
 The scripted checks validate the model and server. Browser observations validate the exercised flow. Neither independently validates a user's source statements, rights assessments or test results.
 
-## Limits
+## Pack Studio follow-up
 
-No hosted deployment, desktop browser, physical iPhone/Android, external-source reachability, storage-quota failure, malformed-storage recovery, multi-tab race or offline cold start was browser-tested. Storage warnings, recovery and conflict protection are implemented but should not be described as independently browser-verified. No live TikTok or AI automation exists in this MVP.
+The follow-up adds a manual production editor for the six-slide, five-caption and newsletter pilot. All 35 combined tests passed, with zero skipped. The editor's 18 model tests cover strict shape and size limits, live-count rules, missing fields, source review gates, sanitized JSON, import check resets and inert hostile text in draft exports. The server test also checks its four public assets are served.
+
+Browser-tested on desktop with the fictional Harbor Studio example: 6/5/1 completion, readiness after both source checks, reload persistence, a 46-word slide failing the 45-word limit, checks clearing after edits, a downloaded JSON backup, confirmed file-import replacement resetting review, and actual editable-text/review-HTML downloads. The downloaded HTML contains the fictional label and no script tags. The desktop page had no horizontal overflow. The browser console showed no errors during the exercised flow.
+
+The new editor's mobile layout, native print output, quota/corrupt-storage paths and simultaneous editing tabs were not browser-tested. Open one editing tab. The HTML export is a draft layout; no PDF or image export was verified. No time savings, buyer demand, payment or earnings were established.
+
+## Remaining limits
+
+No hosted deployment, physical iPhone/Android, external-source reachability, storage-quota failure, malformed-storage recovery, multi-tab race or offline cold start was browser-tested. Storage warnings, recovery and conflict protection are implemented but should not be described as independently browser-verified. No live TikTok or AI automation exists in this MVP.

@@ -11,6 +11,10 @@ const assets = new Map([
   ['/core.mjs', ['core.mjs', 'text/javascript; charset=utf-8']],
   ['/styles.css', ['styles.css', 'text/css; charset=utf-8']],
   ['/favicon.svg', ['favicon.svg', 'image/svg+xml']],
+  ['/pack-studio.html', ['pack-studio.html', 'text/html; charset=utf-8']],
+  ['/pack-studio.mjs', ['pack-studio.mjs', 'text/javascript; charset=utf-8']],
+  ['/pack-studio.css', ['pack-studio.css', 'text/css; charset=utf-8']],
+  ['/pack-core.mjs', ['pack-core.mjs', 'text/javascript; charset=utf-8']],
 ]);
 
 export const contentSecurityPolicy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; frame-ancestors 'none'";
