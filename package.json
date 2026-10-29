@@ -1,0 +1,13 @@
+{
+  "name": "ai-command-center",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A local-first, review-driven AI discovery and experiment workspace",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test tests/core.test.mjs",
+    "check": "node --check app.mjs && node --check core.mjs && node --check scripts/serve.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

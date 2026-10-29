@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="description" content="A local-first workspace for manual TikTok research, evidence review, and build experiments.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>AI Command Center</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.mjs" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to workspace</a>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Workspace sidebar">
+        <a class="brand" href="./" aria-label="AI Command Center home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span class="brand-name">COMMAND<span>CENTER</span></span>
+        </a>
+        <div class="workspace-label"><span class="status-dot" aria-hidden="true"></span>PERSONAL WORKSPACE<span class="local-label">LOCAL</span></div>
+        <div class="nav-label">WORKFLOW</div>
+        <nav class="nav-list" aria-label="Main navigation">
+          <button type="button" class="nav-item active" data-view="discoveries" aria-current="page"><span class="nav-icon" aria-hidden="true">↗</span><span>Discoveries</span><span class="nav-number" aria-hidden="true">01</span></button>
+          <button type="button" class="nav-item" data-view="review"><span class="nav-icon" aria-hidden="true">◎</span><span>Review desk</span><span class="nav-number" aria-hidden="true">02</span></button>
+          <button type="button" class="nav-item" data-view="build"><span class="nav-icon" aria-hidden="true">▦</span><span>Build board</span><span class="nav-number" aria-hidden="true">03</span></button>
+          <button type="button" class="nav-item" data-view="data"><span class="nav-icon" aria-hidden="true">⇄</span><span>Workspace data</span><span class="nav-number" aria-hidden="true">04</span></button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-note"><span class="sidebar-note-icon" aria-hidden="true">⌁</span><p>Good ideas need<br><strong>a little structure.</strong></p></div>
+          <div class="storage-badge" id="storage-status"><span class="status-dot" aria-hidden="true"></span>Saved on this browser</div>
+          <p class="storage-explainer">Local storage, under your control.<br>Export a copy to keep a backup.</p>
+          <div class="sidebar-footer"><span>AI COMMAND CENTER</span><span>v0.1</span></div>
+        </div>
+      </aside>
+
+      <main class="main" id="main" tabindex="-1">
+        <header class="main-header">
+          <div class="page-heading"><p class="eyebrow">YOUR AI WORKSPACE</p><h1 id="view-title">Discoveries</h1><p class="page-subtitle" id="view-subtitle">Turn interesting finds into considered next steps.</p></div>
+          <div class="header-actions"><button class="button secondary" id="export-data" type="button"><span aria-hidden="true">↓</span> Export workspace</button><button class="button primary" id="add-discovery" type="button"><span aria-hidden="true">+</span> Add discovery</button></div>
+        </header>
+
+        <section class="workspace-intro" aria-label="Workspace approach">
+          <div class="intro-symbol" aria-hidden="true">↗</div><div class="intro-copy"><p class="intro-title">A clear path from idea to experiment.</p><p>Capture sources. Review the evidence. Track the build.</p></div><span class="intro-label"><span class="status-dot" aria-hidden="true"></span>Manual research <span aria-hidden="true">·</span> Local storage</span>
+        </section>
+
+        <section id="metrics" class="metrics" aria-label="Workspace overview"></section>
+        <div id="notice" class="notice" role="status" aria-live="polite"></div>
+        <div id="view-content" class="view-content"><div class="empty-state"><span class="empty-icon" aria-hidden="true">↗</span><h2>Your next idea starts here.</h2><p>Add a discovery to capture its source, review the evidence, and decide what is worth building.</p><p class="muted">Loading your local workspace…</p></div></div>
+        <footer class="main-footer"><span>A workspace for your judgment.</span><span>No connected accounts. No automatic posting.</span></footer>
+      </main>
+    </div>
+
+    <dialog id="modal" class="modal" aria-labelledby="modal-title">
+      <button type="button" id="modal-close" class="modal-close" aria-label="Close dialog">×</button>
+      <div id="modal-content"></div>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <noscript><div class="noscript-message">Enable JavaScript to use the local workspace. This app stores your work in this browser and does not connect to TikTok.</div></noscript>
+  </body>
+</html>
